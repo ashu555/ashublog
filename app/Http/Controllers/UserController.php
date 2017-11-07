@@ -17,24 +17,34 @@ class UserController extends Controller
 
     public function editUser(Request $request,$user_id)
     {
+
        $this->validate($request,[
        'name'=>'required',
        'email'=>'required',
 
 
        ]);
-       $users=new User;
+       $users=User::find($user_id);
        $users->name=$request->input('name');
-       $users->name=$request->input('email');
+       $users->email=$request->input('email');
+       $users->save();
 
-       $data=array(
-       'name'=> $users->name,
-       'email'=>$users->email
-       );
-       User::where('id',$user_id)
-       ->update($data);
-       $users->update();
+       // $data=array(
+       // 'name'=> $users->name,
+       // 'email'=>$users->email
+       // );
+       // User::where('id',$user_id)
+       // ->update($data);
+       // $users->update();
        return redirect('/user');
        with('response','User updated Successfully');
+    }
+
+    public function deleteUser($user_id)
+    {
+
+      User::where('id',$user_id)
+      ->delete();
+       return redirect ('/home')->with('response','User Deleted Successfully');
     }
 }

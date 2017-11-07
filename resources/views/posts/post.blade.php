@@ -83,9 +83,78 @@
                                 <button type="submit" class="btn btn-primary btn-large btn-block">
                                     Publish Post
                                 </button>
+
                             </div>
                         </div>
                     </form>
+                    <div class="col-md-4" ></div>
+                     <div class="col-md-6" >
+                        <ul  class="list-group">
+                        @if (count($categories)>0)
+                        @foreach($categories->all() as $category)
+                        <li class="list-group-item"> <a href='{{url ("category/{$category->id}")}}'>  {{$category->category}}</a>
+
+                       
+
+
+
+
+
+
+                       <td> <p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit{{$category->id}}" style="margin-left:250px;"><span class="glyphicon glyphicon-pencil" ></span></button></p></td>
+
+   <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal"  data-target="#delete" style="margin-left:250px;" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </li>
+
+
+                        @endforeach
+
+
+
+                         @else
+                         <p>No Category Found </p>
+                        @endif
+                        
+                        </ul>
+                        
+
+                    </div>
+
 
 
 

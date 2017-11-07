@@ -71,7 +71,7 @@ box-shadow:none !important;
 <body>
 <div class="container">
 	<div class="row">
-		<h2 class="text-center">Bootstrap styling for Datatable</h2>
+		<h2 class="text-center">All Users</h2>
 	</div>
     
         <div class="row">
@@ -106,54 +106,7 @@ box-shadow:none !important;
    <p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal"  data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
 						</tr>
 
-            <div class="modal fade" id="edit{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-              
-                 
 
-                
-   
-      <div class="modal-dialog">
-        <form class="form-horizontal" method="POST" action="{{ url('/editUser',$user->id) }}" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-        <!-- <form class="form-horizontal" method ="POST"  action="{{url('/editUser',$user->id)}}"> -->
-    <div class="modal-content">
-          <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
-      </div>
-         <div class="modal-body">
-
-          <div class="form-group">
-        <input class="form-control " type="text" placeholder="{{$user->name}}">
-        </div>
-        <div class="form-group">
-        
-        <input class="form-control " type="email" placeholder="{{$user->email}}">
-        </div>
-       
-        
-        
-     
-        
-        </div>
-      
-
-      
-
-          <div class="modal-footer ">
-            <input type="submit" name="submit"  class="btn btn-warning btn-lg" style="width: 100%;">
-        <!-- <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button> -->
-      </div>
-      </div>
-      </form>
-        </div>
-    <!-- /.modal-content --> 
-  
-  
-      <!-- /.modal-dialog --> 
-    </div>
-    
-						
                            
              @endforeach             
                            
@@ -165,7 +118,39 @@ box-shadow:none !important;
 	</div>
 </div>
 
-
+ <div class="modal fade" id="edit{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+ 
+ <div class="modal-dialog">
+   <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+      </div>
+         <div class="modal-body">
+          <form class="form-horizontal" method="POST" action='{{url("/editUser/{$user->id}")}}' enctype="multipart/form-data">
+                        {{ csrf_field() }}
+          <!--  -->
+          
+       
+          <div class="form-group">
+        <input class="form-control" name="name" type="text" value="{{$user->name}}">
+        </div>
+        <div class="form-group">
+        
+        <input class="form-control" name="email" type="email" value="{{$user->email}}">
+        </div>
+     <div class="modal-footer ">
+       
+        <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+      </div>
+   
+       </form>
+        </div>
+           </div>
+   </div>
+  
+    </div>
+  
     
     
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -181,7 +166,7 @@ box-shadow:none !important;
        
       </div>
         <div class="modal-footer ">
-        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+       <a href='{{url("/deleteuser/{$user->id}")}}'><button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button></a>
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>

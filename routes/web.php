@@ -33,6 +33,9 @@ Route::post('/editPost/{id}', 'PostController@editPost')->middleware('auth');
 
 Route::post('/editUser/{id}', 'UserController@editUser')->middleware('auth');
 Route::get('/delete/{id}', 'PostController@deletePost')->middleware('auth');
+Route::get('/deleteuser/{id}', 'UserController@deleteUser')->middleware('auth');
+
+
 Route::get('/category/{id}', 'PostController@category')->middleware('auth');
 
 Route::get('/like/{id}', 'PostController@like')->middleware('auth');
